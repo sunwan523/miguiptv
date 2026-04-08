@@ -10,6 +10,7 @@ export default {
       return new Response(m3uContent, {
         headers: {
           'Content-Type': 'application/vnd.apple.mpegurl; charset=utf-8',
+          'Content-Disposition': 'attachment; filename="playlist.m3u"',
           'Access-Control-Allow-Origin': '*',
         },
       });
