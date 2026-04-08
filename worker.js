@@ -62,7 +62,8 @@ function convertToM3U(txtContent) {
     const channel = channelSources[key];
     for (let i = 0; i < channel.urls.length; i++) {
       const url = channel.urls[i];
-      m3u += '#EXTINF:-1 tvg-id="" tvg-name="' + channel.name + '" group-title="' + channel.group + '",' + channel.name + '\n';
+      const displayName = channel.urls.length > 1 ? channel.name + ' (源' + (i + 1) + ')' : channel.name;
+      m3u += '#EXTINF:-1 tvg-id="" tvg-name="' + displayName + '" group-title="' + channel.group + '",' + displayName + '\n';
       m3u += url + '\n';
     }
   }
