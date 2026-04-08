@@ -35,6 +35,8 @@ function convertToM3U(txtContent, isTVOnly) {
   const lines = txtContent.split('\n');
   let m3u = '#EXTM3U\n';
   let currentGroup = '';
+  let channelCount = 0;
+  const maxChannels = 130;
   
   const vodKeywords = ['剧场', '电影', '综艺', '电竞', '赛事', '动画', '萌宠', '大剧', '精选', '综合', '爱情', '喜剧', '惊悚', '悬疑', '军旅', '家庭', '古装', '动作', '中国功夫', '金牌', '军事', '农业', '纪录', '健康', '体育', '辣婆', '炫舞', '视频'];
   
@@ -61,8 +63,11 @@ function convertToM3U(txtContent, isTVOnly) {
           if (isVOD) continue;
         }
         
+        if (channelCount >= maxChannels) break;
+        
         m3u += '#EXTINF:-1 group-title="' + currentGroup + '",' + channelName + '\n';
         m3u += streamUrl + '\n';
+        channelCount++;
       }
     }
   }
