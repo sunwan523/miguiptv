@@ -1,0 +1,21 @@
+
+# Node modules
+node_modules/
+
+# Testing files
+test_output.m3u
+test_conversion.js
+decode.js
+decode_url.js
+
+# Temporary files
+*.tmp
+*.temp
+
+# IDE
+.vscode/
+.idea/
+
+# Wrangler
+.wrangler/
+

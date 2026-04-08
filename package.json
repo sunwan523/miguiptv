@@ -1,0 +1,17 @@
+
+{
+  "name": "miguiptv",
+  "version": "1.0.0",
+  "description": "免服务器【worker版本】直播订阅 - M3U格式",
+  "main": "worker.js",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
+
