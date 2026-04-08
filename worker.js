@@ -31,6 +31,7 @@ function convertToM3U(txtContent) {
   const lines = txtContent.split('\n');
   let m3u = '#EXTM3U\n';
   let currentGroup = '';
+  const channelSources = {};
   
   for (let line of lines) {
     line = line.trim();
@@ -43,9 +44,26 @@ function convertToM3U(txtContent) {
       } else {
         const channelName = parts[0];
         const streamUrl = parts.slice(1).join(',');
-        m3u += '#EXTINF:-1 tvg-id="" tvg-name="' + channelName + '" group-title="' + currentGroup + '",' + channelName + '\n';
-        m3u += streamUrl + '\n';
+        const key = currentGroup + '|' + channelName;
+        
+        if (!channelSources[key]) {
+          channelSources[key] = {
+            name: channelName,
+            group: currentGroup,
+            urls: []
+          };
+        }
+        channelSources[key].urls.push(streamUrl);
       }
+    }
+  }
+  
+  for (const key in channelSources) {
+    const channel = channelSources[key];
+    for (let i = 0; i < channel.urls.length; i++) {
+      const url = channel.urls[i];
+      m3u += '#EXTINF:-1 tvg-id="" tvg-name="' + channel.name + '" group-title="' + channel.group + '",' + channel.name + '\n';
+      m3u += url + '\n';
     }
   }
   
