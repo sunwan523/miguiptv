@@ -1,4 +1,4 @@
-
+ney
 export default {
   async fetch(request, env, ctx) {
     try {
@@ -9,8 +9,7 @@ export default {
       
       return new Response(m3uContent, {
         headers: {
-          'Content-Type': 'application/vnd.apple.mpegurl; charset=utf-8',
-          'Content-Disposition': 'attachment; filename="playlist.m3u"',
+          'Content-Type': 'application/x-mpegurl; charset=utf-8',
           'Access-Control-Allow-Origin': '*',
         },
       });
