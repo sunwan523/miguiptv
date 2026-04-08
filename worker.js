@@ -2,8 +2,6 @@
 export default {
   async fetch(request, env, ctx) {
     try {
-      const url = new URL(request.url);
-      
       const response = await fetch('https://123.tv1288.xyz/sm1.txt');
       const text = await response.text();
       
